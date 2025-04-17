@@ -153,8 +153,11 @@ const Index = () => {
               </ul>
 
               <div className="mt-8">
-                <Button className="bg-blue-700 hover:bg-blue-800">
-                  Узнать больше
+                <Button 
+                  variant="outline" 
+                  className="border-blue-900 text-blue-900 hover:bg-blue-900/10 text-base px-6 py-6 rounded-md"
+                >
+                  Связаться с нами
                 </Button>
               </div>
             </div>
