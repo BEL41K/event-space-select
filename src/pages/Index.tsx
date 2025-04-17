@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
@@ -7,7 +6,7 @@ import VenueList from '@/components/VenueList';
 import ContactForm from '@/components/ContactForm';
 import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
-import { Check, MapPin, Calendar, Users, DollarSign } from 'lucide-react';
+import { Check, MapPin, Calendar, Users, DollarSign, Phone, Mail } from 'lucide-react';
 
 const Index = () => {
   return (
