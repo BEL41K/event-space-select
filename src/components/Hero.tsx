@@ -1,12 +1,9 @@
-
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { ChevronDown } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-
 const Hero: React.FC = () => {
   const navigate = useNavigate();
-  
   const scrollToVenues = () => {
     const venuesSection = document.getElementById('venues');
     if (venuesSection) {
@@ -15,7 +12,6 @@ const Hero: React.FC = () => {
       });
     }
   };
-  
   const scrollToContact = () => {
     const contactSection = document.getElementById('contact');
     if (contactSection) {
@@ -24,7 +20,6 @@ const Hero: React.FC = () => {
       });
     }
   };
-  
   return <div className="relative w-full h-[90vh] min-h-[600px] flex items-center">
       {/* Background image with overlay */}
       <div className="absolute inset-0 bg-cover bg-center z-0" style={{
@@ -47,7 +42,7 @@ const Hero: React.FC = () => {
             <Button className="bg-gold-500 hover:bg-gold-600 text-blue-950 text-base px-6 py-6 rounded-md" onClick={scrollToVenues}>
               Найти помещение
             </Button>
-            <Button variant="outline" className="border-white text-white hover:bg-white/10 text-base px-6 py-6 rounded-md" onClick={scrollToContact}>
+            <Button variant="outline" onClick={scrollToContact} className="border-white hover:bg-white/10 text-base px-6 py-6 rounded-md text-blue-950">
               Связаться с нами
             </Button>
           </div>
