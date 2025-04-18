@@ -1,4 +1,5 @@
-import React from 'react';
+
+import React, { useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import FeaturedVenues from '@/components/FeaturedVenues';
@@ -9,6 +10,21 @@ import { Button } from '@/components/ui/button';
 import { Check, MapPin, Calendar, Users, DollarSign, Phone, Mail } from 'lucide-react';
 
 const Index = () => {
+  // Set up IDs for scroll sections
+  useEffect(() => {
+    // This ensures ids are set properly for scrolling
+    const sections = {
+      'why-us': document.querySelector('.why-choose-us'),
+      'contact': document.querySelector('.contact-section')
+    };
+    
+    Object.entries(sections).forEach(([id, element]) => {
+      if (element && !element.id) {
+        element.id = id;
+      }
+    });
+  }, []);
+
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
@@ -90,7 +106,7 @@ const Index = () => {
       </section>
 
       {/* Why Choose Us Section */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-white why-choose-us">
         <div className="container mx-auto px-4 md:px-6">
           <div className="flex flex-col md:flex-row items-center">
             <div className="md:w-1/2 mb-8 md:mb-0 md:pr-12">
@@ -156,6 +172,12 @@ const Index = () => {
                 <Button 
                   variant="outline" 
                   className="border-blue-900 text-blue-900 hover:bg-blue-900/10 text-base px-6 py-6 rounded-md"
+                  onClick={() => {
+                    const contactSection = document.getElementById('contact');
+                    if (contactSection) {
+                      contactSection.scrollIntoView({ behavior: 'smooth' });
+                    }
+                  }}
                 >
                   Связаться с нами
                 </Button>
@@ -176,7 +198,7 @@ const Index = () => {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-16 bg-gray-50">
+      <section id="contact" className="py-16 bg-gray-50 contact-section">
         <div className="container mx-auto px-4 md:px-6">
           <div className="flex flex-col md:flex-row">
             <div className="md:w-1/2 mb-8 md:mb-0 md:pr-12">
