@@ -9,27 +9,33 @@ services:
 
   backend:
     build:
-      context: .                   # корень репо
-      dockerfile: backend/Dockerfile
+      context: ./backend
+      dockerfile: Dockerfile
     env_file:
       - backend/.env
     depends_on:
       - db
     ports:
       - "8000:8000"
+    # Монтируем только папку с кодом,
+    # чтобы не затирать alembic.ini и саму папку миграций,
+    # но при этом видеть изменения в app/ при разработке:
     volumes:
-      - ./backend:/app             # для работы в dev-режиме
+      - ./backend/app:/app/app
 
   frontend:
     build:
-      context: .                   # корень репо
-      dockerfile: frontend/Dockerfile
+      context: ./frontend
+      dockerfile: Dockerfile
     depends_on:
       - backend
     ports:
-      - "3000:3000"
-    volumes:
-      - ./frontend:/app            # для живой подгрузки кода
+      - "8080:8080"
+    # НЕ монтируем node_modules!
+    # Убираем bind-mount, чтобы не затирать
+    # установленные зависимости сборки:
+    # volumes:
+    #   - ./frontend:/app
 
 volumes:
   db_data:
