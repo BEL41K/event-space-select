@@ -3,6 +3,7 @@ from typing import Annotated
 from fastapi import APIRouter, Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordRequestForm
 from sqlalchemy.ext.asyncio import AsyncSession
+from sqlalchemy import select
 
 from core.models import db_helper
 from .schemas import Token, UserCreate
@@ -74,3 +75,13 @@ async def login(
 @router.post("/logout")
 async def logout():
     return {"message": "Successfully logged out"}
+
+
+@router.get("/users/", response_model=list[UserCreate])
+async def get_all_users(
+    session: AsyncSession = Depends(db_helper.session_getter),
+):
+    stmt = select(User)
+    result = await session.execute(stmt)
+    users = result.scalars().all()
+    return users
