@@ -69,29 +69,7 @@ docker compose up --build
 
 ## Полезные команды
 
-- Остановить все сервисы:
-  ```bash
-  ```
-
-docker compose down
-
 ````
-
-- Полностью пересоздать базу (удалить том):
-  ```bash
-docker compose down -v
-````
-
-- Просмотр логов бэкенда:
-  ```bash
-  ```
-
-docker compose logs -f backend
-
-````
-
-- Выполнить миграции вручную:
-  ```bash
 docker compose exec backend alembic upgrade head
 ````
 
