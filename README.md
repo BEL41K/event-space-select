@@ -45,11 +45,13 @@ Event Space Select — это приложение для управления �
    Отредактируйте `backend/.env`, заполнив параметры подключения к базе:
 
    ```dotenv
-   POSTGRES_USER=postgres
-   POSTGRES_PASSWORD=123
-   POSTGRES_DB=event_space
+   POSTGRES_DB=your_database_name
+   POSTGRES_USER=your_database_user
+   POSTGRES_PASSWORD=your_database_password
    POSTGRES_HOST=db
    POSTGRES_PORT=5432
+   
+   BACKEND_PORT=8000
    ```
 
 3. (Опционально) Если потребуется, создайте или измените `.env` для фронтенда в директории `frontend/`.
